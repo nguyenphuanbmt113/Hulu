@@ -36,12 +36,12 @@ export const Search = () => {
   return (
     <div className="px-4 pt-[100px]">
       <div className="mt-5 mb-10 flex items-start gap-5 flex-col md:items-center md:flex-row">
-        <h5 className="text-white">Sort By</h5>
+        <h5 className="text-white dark:text-black">Sort By</h5>
         <select
-          className="form-select p-2"
+          className="form-select p-2 border border-black border-solid"
           aria-label="Default select example"
           onChange={(e) => setSort(e.target.value)}>
-          <option value="" selected>
+          <option value="" className="" selected>
             Open this select menu
           </option>
           <option value="title.asc">Movie Title A to Z</option>
@@ -56,7 +56,7 @@ export const Search = () => {
           </option>
         </select>
         <select
-          className="form-select p-2"
+          className="form-select p-2 border border-black border-solid"
           aria-label="Default select example"
           onChange={(e) => setYear(e.target.value)}>
           <option value="" selected className="text-white">
@@ -69,7 +69,7 @@ export const Search = () => {
           <option value="year=2022">2022</option>
         </select>
         <select
-          className="form-select p-2"
+          className="form-select p-2 border border-black border-solid"
           aria-label="Default select example"
           onChange={(e) => setRegion(e.target.value)}>
           <option value="" selected className="text-white">

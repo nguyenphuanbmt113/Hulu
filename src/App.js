@@ -11,9 +11,10 @@ import { Navbar } from "./components/Navbar";
 import { Search } from "./page/Search";
 import { MovieDetailPage } from "./page/MovieDetailPage";
 import { Genres } from "./page/Genres";
+import { Footer } from "./page/Footer";
 function App() {
   return (
-    <>
+    <div className="min-h-screen dark:bg-white">
       <AuthContextProvider>
         <Navbar></Navbar>
         <Routes>
@@ -33,8 +34,9 @@ function App() {
             }></Route>
           <Route path="/genre/:genre" element={<Genres></Genres>}></Route>
         </Routes>
+        <Footer></Footer>
       </AuthContextProvider>
-    </>
+    </div>
   );
 }
 

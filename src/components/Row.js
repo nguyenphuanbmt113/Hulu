@@ -16,7 +16,9 @@ export const Row = ({ title, fetchUrl }) => {
   }, [fetchUrl]);
   return (
     <div className="p-4 md:px-8">
-      <h2 className="text-white font-bold md:text-xl mb-4">{title}</h2>
+      <h2 className="text-white font-bold md:text-xl mb-4 dark:text-black">
+        {title}
+      </h2>
       <Swiper
         spaceBetween={10}
         slidesPerView={2}

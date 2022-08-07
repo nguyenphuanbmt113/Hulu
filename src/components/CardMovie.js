@@ -1,17 +1,19 @@
 import React from "react";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 export const CardMovie = ({ item }) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
-    <div className="relative w-full h-full" onClick={()=>navigate(`/movie/${item.id}`)}>
-      <div className="w-full h-auto">
+    <div
+      className="relative w-full h-full cursor-pointer"
+      onClick={() => navigate(`/movie/${item.id}`)}>
+      <div className="w-full h-auto cursor-pointer">
         <img
           src={`https://image.tmdb.org/t/p/w500/${item?.backdrop_path}`}
           alt={item?.title}
           className="w-full h-full object-cover rounded-md"
         />
       </div>
-      <p className="text-white mt-2">{item.title}</p>
+      <p className="text-gray-400 mt-2 dark:text-black">{item.title}</p>
       <div className="absolute top-[5%] left-[5%]">
         <svg
           xmlns="http://www.w3.org/2000/svg"
