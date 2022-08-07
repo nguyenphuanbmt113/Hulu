@@ -14,7 +14,7 @@ export const Footer = () => {
     <div className="text-white bg-black p-4 md:p-8 mt-[50px]">
       <div>
         <Link to="/">
-          <h1 className="text-red-600 text-4xl font-bold cursor-pointer mb-5">
+          <h1 className="text-red-600 text-2xl font-bold cursor-pointer mb-5">
             NETFLIX
           </h1>
         </Link>

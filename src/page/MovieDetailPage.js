@@ -4,6 +4,7 @@ import axios from "axios";
 import { Casting } from "../components/Casting";
 import { Row } from "../components/Row";
 import requests from "../Requests";
+import { VideoMovie } from "../components/VideoMovie";
 export const MovieDetailPage = () => {
   let navigate = useNavigate();
   const { id } = useParams();
@@ -15,7 +16,6 @@ export const MovieDetailPage = () => {
       return str;
     }
   };
-  console.log("movie", movie.genres);
   useEffect(() => {
     const fetching = async () => {
       const res = await axios.get(
@@ -59,7 +59,7 @@ export const MovieDetailPage = () => {
           movie.genres.map((item) => {
             return (
               <span
-                className="px-4 py-2 border border-white bg-transparent text-white cursor-pointer"
+                className="px-4 py-2 border border-white bg-transparent text-white cursor-pointer dark:text-black dark:border-black"
                 key={item.id}
                 onClick={() => navigate(`/genre/${item.id}`)}>
                 {item.name}
@@ -68,6 +68,7 @@ export const MovieDetailPage = () => {
           })}
       </div>
       <Casting id={id}></Casting>
+      <VideoMovie id={id}></VideoMovie>
       <Row title="Top Rated" fetchUrl={requests.requestTopRated}></Row>
       <Row title="Trending" fetchUrl={requests.requestTrending}></Row>
     </>

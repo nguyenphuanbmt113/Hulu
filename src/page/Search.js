@@ -15,7 +15,6 @@ export const Search = () => {
     const fetching = async () => {
       const res = await axios.get(url.concat(changeUrl));
       const data = res?.data.results;
-      console.log("url.concat(changeUrl)", url.concat(changeUrl));
       setMovie(data);
     };
     fetching();
@@ -36,7 +35,6 @@ export const Search = () => {
   return (
     <div className="px-4 pt-[100px]">
       <div className="mt-5 mb-10 flex items-start gap-5 flex-col md:items-center md:flex-row">
-        <h5 className="text-white dark:text-black">Sort By</h5>
         <select
           className="form-select p-2 border border-black border-solid"
           aria-label="Default select example"

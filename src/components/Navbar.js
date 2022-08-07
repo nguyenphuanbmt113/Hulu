@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import { useDarkMode } from "../hooks/useDarkMode";
@@ -17,6 +17,10 @@ export const Navbar = () => {
     }
   };
   const handleCLick = () => {
+    navigate(`/search/${search}`);
+    setSearch("");
+  };
+  const handleSubmit = () => {
     navigate(`/search/${search}`);
     setSearch("");
   };
@@ -57,13 +61,15 @@ export const Navbar = () => {
         </div>
       </div>
       <div className="flex items-center relative">
-        <input
-          type="text"
-          placeholder="Search"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="px-4 py-2 md:w-[400px] w-[200px] bg-transparent border text-white"
-        />
+        <form action="" className="" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="px-4 py-2 md:w-[400px] w-[200px] bg-white border text-black"
+          />
+        </form>
         <div
           className="absolute top-[50%] right-[0%] -translate-y-[50%] bg-red-400 py-[9px] px-5"
           onClick={handleCLick}>
