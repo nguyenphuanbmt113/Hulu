@@ -59,7 +59,7 @@ export const MovieDetailPage = () => {
           movie.genres.map((item) => {
             return (
               <span
-                className="px-4 py-2 rounded-xl border border-white bg-transparent text-white"
+                className="px-4 py-2 border border-white bg-transparent text-white cursor-pointer"
                 key={item.id}
                 onClick={() => navigate(`/genre/${item.id}`)}>
                 {item.name}

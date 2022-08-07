@@ -10,6 +10,7 @@ import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Navbar } from "./components/Navbar";
 import { Search } from "./page/Search";
 import { MovieDetailPage } from "./page/MovieDetailPage";
+import { Genres } from "./page/Genres";
 function App() {
   return (
     <>
@@ -30,6 +31,7 @@ function App() {
                 <Account></Account>
               </ProtectedRoute>
             }></Route>
+          <Route path="/genre/:genre" element={<Genres></Genres>}></Route>
         </Routes>
       </AuthContextProvider>
     </>
