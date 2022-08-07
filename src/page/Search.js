@@ -11,7 +11,7 @@ export const Search = () => {
   const [filter, setFilter] = useState(false);
   const [movies, setMovie] = useState([]);
   useEffect(() => {
-    let url = `https://api.themoviedb.org/3/search/movie?api_key=89c2f4cad3722f5e0fd78a89c8d7a6e8&language=en-US&page=1&query=${search}`;
+    let url = `https://api.themoviedb.org/3/search/movie?api_key=89c2f4cad3722f5e0fd78a89c8d7a6e8&language=en-US&page=1&query=${search}&page=1`;
     const fetching = async () => {
       const res = await axios.get(url.concat(changeUrl));
       const data = res?.data.results;

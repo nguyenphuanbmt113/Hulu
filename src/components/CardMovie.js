@@ -1,19 +1,36 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Collection } from "../context/CollectionContext";
 export const CardMovie = ({ item }) => {
+  const imgRef = useRef();
   const { handleCollection } = Collection();
-
   const navigate = useNavigate();
-
+  useEffect(() => {
+    const img = imgRef.current;
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        img.setAttribute(
+          "src",
+          `https://image.tmdb.org/t/p/original${item.backdrop_path}`
+        );
+      }
+    });
+    if (img) {
+      observer.observe(img);
+    }
+    return () => {
+      observer.unobserve(img);
+    };
+  }, [item.backdrop_path]);
   return (
     <div className="relative w-full h-full cursor-pointer">
       <div
         className="w-full h-auto cursor-pointer"
         onClick={() => navigate(`/movie/${item.id}`)}>
         <img
-          src={`https://image.tmdb.org/t/p/w500/${item?.backdrop_path}`}
-          alt={item?.title}
+          ref={imgRef}
+          // src={`https://image.tmdb.org/t/p/w500/${item?.backdrop_path}`}
+          alt={item?.backdrop_path}
           className="w-full h-full object-cover rounded-md"
         />
       </div>
