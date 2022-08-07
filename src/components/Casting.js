@@ -9,7 +9,9 @@ export const Casting = ({ id }) => {
   const dataCast = data && data.cast;
   return (
     <div>
-      <h1 className="text-center font-bold my-5 text-3xl">Caster</h1>
+      <h1 className="text-center font-bold my-5 text-3xl text-white dark:text-black">
+        Caster
+      </h1>
       <div className="mb-10 flex items-center justify-center gap-7 p-4">
         {dataCast &&
           dataCast.length > 0 &&

@@ -1,20 +1,30 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Collection } from "../context/CollectionContext";
 export const CardMovie = ({ item }) => {
+  const { handleCollection } = Collection();
+
   const navigate = useNavigate();
+
   return (
-    <div
-      className="relative w-full h-full cursor-pointer"
-      onClick={() => navigate(`/movie/${item.id}`)}>
-      <div className="w-full h-auto cursor-pointer">
+    <div className="relative w-full h-full cursor-pointer">
+      <div
+        className="w-full h-auto cursor-pointer"
+        onClick={() => navigate(`/movie/${item.id}`)}>
         <img
           src={`https://image.tmdb.org/t/p/w500/${item?.backdrop_path}`}
           alt={item?.title}
           className="w-full h-full object-cover rounded-md"
         />
       </div>
-      <p className="text-gray-400 mt-2 dark:text-black">{item.title}</p>
-      <div className="absolute top-[5%] left-[5%]">
+      <p
+        className="text-gray-400 mt-2 dark:text-black"
+        onClick={() => navigate(`/movie/${item.id}`)}>
+        {item.title}
+      </p>
+      <div
+        className="absolute top-[5%] left-[5%] cursor-pointer"
+        onClick={() => handleCollection(item)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5"

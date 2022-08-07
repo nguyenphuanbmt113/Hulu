@@ -1,7 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import requests from "../Requests";
 export const Main = () => {
+  const navigate = useNavigate();
   const [movies, setMovies] = useState([]);
   const movie = movies[Math.floor(Math.random() * movies.length)];
   useEffect(() => {
@@ -20,7 +22,9 @@ export const Main = () => {
     }
   };
   return (
-    <div className="w-full h-[600px] text-white relative">
+    <div
+      className="w-full h-[600px] text-white relative"
+      onClick={() => navigate(`/movie/${movie.id}`)}>
       <div className="overlay w-full h-full absolute inset-0 bg-gradient-to-r from-black z-1"></div>
       <div className="w-full h-full">
         <img

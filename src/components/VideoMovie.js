@@ -10,7 +10,7 @@ export const VideoMovie = ({ id }) => {
   console.log("datavideo:", dataVideo);
   return (
     <div className="my-5">
-      <h1 className="text-center font-bold my-5 text-3xl">Trailer</h1>
+      <h1 className="text-center font-bold my-5 text-3xl text-white dark:text-black">Trailer</h1>
       {dataVideo &&
         dataVideo.length > 0 &&
         dataVideo.slice(1, 2).map((item) => (
