@@ -27,7 +27,7 @@ function App() {
             <Route
               path="/collection"
               element={<CollectionPage></CollectionPage>}></Route>
-            <Route path="/search/:search" element={<Search></Search>}></Route>
+            <Route path="/search/:query" element={<Search></Search>}></Route>
             <Route
               path="/movie/:id"
               element={<MovieDetailPage></MovieDetailPage>}></Route>

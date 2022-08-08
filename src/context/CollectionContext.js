@@ -3,8 +3,14 @@ const CollectionContext = createContext();
 const CollectionContextProvider = ({ children }) => {
   const [listCollection, setListCollection] = useState([]);
   const handleCollection = (item) => {
-    setListCollection((p) => [...p, item]);
-    return;
+    const check = listCollection.every((i) => {
+      return i.id !== item.id;
+    });
+    if (check) {
+      setListCollection((p) => [...p, item]);
+    } else {
+      setListCollection([item]);
+    }
   };
   const deleteCollection = (id) => {
     const newArr = listCollection.filter((item) => {
