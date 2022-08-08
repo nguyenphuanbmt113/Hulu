@@ -23,9 +23,9 @@ export const CardMovie = ({ item }) => {
     };
   }, [item.backdrop_path]);
   return (
-    <div className="relative w-full h-full cursor-pointer">
+    <div className="relative w-full h-full cursor-pointer group">
       <div
-        className="w-full h-auto cursor-pointer"
+        className="w-full h-auto cursor-pointer relative"
         onClick={() => navigate(`/movie/${item.id}`)}>
         <img
           ref={imgRef}
@@ -33,6 +33,31 @@ export const CardMovie = ({ item }) => {
           alt={item?.backdrop_path}
           className="w-full h-full object-cover rounded-md"
         />
+        <div class="absolute top-0 left-0 w-full h-0 flex flex-col justify-center items-center bg-black/50 opacity-0 group-hover:h-full group-hover:opacity-100 duration-500">
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-9 w-9"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="#fff"
+              strokeWidth="2">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </div>
+          <div className="absolute top-[5%] right-[5%] w-7 h-7 bg-yellow-400 rounded-3xl flex items-center justify-center">
+            <p className="text-black text-sm">{item.vote_average}</p>
+          </div>
+        </div>
       </div>
       <p
         className="text-gray-400 mt-2 dark:text-black"
@@ -56,9 +81,6 @@ export const CardMovie = ({ item }) => {
           />
         </svg>
       </div>
-      {/* <div className="absolute top-[5%] right-[5%] w-7 h-7 bg-yellow-400 rounded-3xl flex items-center justify-center">
-        <p className="text-black text-sm">{item.vote_average}</p>
-      </div> */}
     </div>
   );
 };

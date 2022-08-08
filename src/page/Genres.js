@@ -16,16 +16,24 @@ export const Genres = () => {
   const [totalPages, setTotalPages] = useState(0);
   const { search } = useLocation();
   useEffect(() => {
-    let url = `https://api.themoviedb.org/3/discover/movie?api_key=89c2f4cad3722f5e0fd78a89c8d7a6e8&with_genres=${genre}&page=${page}&limit=20`;
-    const fetching = async () => {
-      const res = await axios.get(url.concat(changeUrl));
-      console.log("resgenres:", res);
-      setTotalPages(res?.data?.total_pages);
-      const data = res?.data.results;
-      setMovie(data);
+    let here = true;
+    try {
+      let url = `https://api.themoviedb.org/3/discover/movie?api_key=89c2f4cad3722f5e0fd78a89c8d7a6e8&with_genres=${genre}&page=${page}&limit=20`;
+      const fetching = async () => {
+        const res = await axios.get(url.concat(changeUrl));
+        const data = res?.data.results;
+        if (here === false) return null;
+        setTotalPages(res?.data?.total_pages);
+        setMovie(data);
+      };
+      fetching();
+    } catch (error) {
+      console.log("error:", error);
+    }
+    return () => {
+      here = false;
     };
-    fetching();
-  }, [genre, changeUrl]);
+  }, [genre, changeUrl, page]);
   useEffect(() => {
     setChangeUrl("");
     if (sort) {

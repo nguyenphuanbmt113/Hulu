@@ -15,16 +15,24 @@ export const Search = () => {
   const [totalPages, setTotalPages] = useState(0);
   const { search } = useLocation();
   useEffect(() => {
-    let url = `https://api.themoviedb.org/3/search/movie?api_key=89c2f4cad3722f5e0fd78a89c8d7a6e8&language=en-US&page=1&query=${query}&page=${page}&limit=20`;
-    const fetching = async () => {
-      const res = await axios.get(url.concat(changeUrl));
-      setTotalPages(res?.data?.total_pages);
-      const data = res?.data.results;
-      setMovie(data);
+    let here = true;
+    try {
+      let url = `https://api.themoviedb.org/3/search/movie?api_key=89c2f4cad3722f5e0fd78a89c8d7a6e8&language=en-US&page=1&query=${query}&page=${page}&limit=20`;
+      const fetching = async () => {
+        const res = await axios.get(url.concat(changeUrl));
+        if (here === false) return null;
+        setTotalPages(res?.data?.total_pages);
+        const data = res?.data.results;
+        setMovie(data);
+      };
+      fetching();
+    } catch (err) {
+      console.log("err:", err);
+    }
+    return () => {
+      here = false;
     };
-    fetching();
-  }, [search, changeUrl]);
-  useEffect(() => {
+  }, [changeUrl, query, page]).useEffect(() => {
     setChangeUrl("");
     if (sort) {
       setChangeUrl(changeUrl.concat("&", sort));
