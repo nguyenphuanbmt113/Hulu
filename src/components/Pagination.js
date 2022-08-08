@@ -1,6 +1,6 @@
 import React from "react";
 import usePagination from "../hooks/usePagination";
-export const Pagination = ({ page, totalPages }) => {
+export const Pagination = React.memo(({ page, totalPages }) => {
   const { firstArr, lastArr, isActive, prev, next, jump } = usePagination(
     totalPages,
     page
@@ -32,4 +32,4 @@ export const Pagination = ({ page, totalPages }) => {
       <button onClick={next}>&raquo;</button>
     </div>
   );
-};
+});
